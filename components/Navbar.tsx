@@ -25,6 +25,7 @@ interface DataItem {
   const [menuOpen, setMenuOpen] = useState(false);
   const [cities, setCities] = useState<DataItem[]>([]);
   const [selectedCityId, setSelectedCityId] = useState<number | null>(null);
+  const [selectedCityName, setSelectedCityName] = useState<string | null>("Select Your City");
 
 
   // Fetch City data from the backend
@@ -41,6 +42,10 @@ interface DataItem {
       }
       // Get cityId from the URL from local Storage
       const cityId = localStorage.getItem('city');
+      const cityname = localStorage.getItem('cityname');
+      if (cityname) {
+        setSelectedCityName(cityname);
+      }
       if (cityId) {
         setSelectedCityId(parseInt(cityId, 10));
 
@@ -76,6 +81,7 @@ interface DataItem {
 
     // Store selectedCity.id in session storage
     localStorage.setItem('city', selectedCity.id.toString());
+    localStorage.setItem('cityname', selectedCity.name);
   };
 }
 
@@ -85,9 +91,10 @@ interface DataItem {
          
           
         <Select
+        className="bold-placeholder"
         showSearch
-        style={{ width: 200 }}
-        placeholder="Select Your City"
+        style={{ width: 150 }}
+        placeholder={selectedCityName}
         optionFilterProp="children"
         filterOption={(input, option) =>
           (option?.children as unknown as string)

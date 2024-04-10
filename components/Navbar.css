@@ -89,4 +89,7 @@ nav .menu span {
     nav ul li a {
         margin: 0.2rem 0.5rem;
     }
+    .bold-placeholder .ant-select-selection-placeholder {
+        font-weight: bold;
+      }
 }

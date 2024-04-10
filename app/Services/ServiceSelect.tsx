@@ -38,9 +38,9 @@ const ServiceSelect: React.FC = () => {
       }
 
       const urlParams = new URLSearchParams(window.location.search);
-    const city = urlParams.get('city');
-    const model = urlParams.get('model');
-    const fuel = urlParams.get('fuel');
+      const city = urlParams.get('city');
+      const model = urlParams.get('model');
+      const fuel = urlParams.get('fuel');
 
     if (city) {
       setSelectedCityId(parseInt(city, 10));
@@ -56,8 +56,6 @@ const ServiceSelect: React.FC = () => {
     };
 
     fetchMake();
-
-
 
   }, []);
 
@@ -180,6 +178,11 @@ const ServiceSelect: React.FC = () => {
   
 
   const handleShowIds = () => {
+        
+    if (selectedCityId === null) {
+      alert('Select your Location Please');
+    }
+
     notification.info({
       message: 'Please Select Your Make to Proceed',
       description: (
