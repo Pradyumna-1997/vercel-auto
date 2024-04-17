@@ -8,11 +8,11 @@ const End = () => {
     <footer className="flexCenter mb-24 mt-10 fixed-bottom">
       <div className="padding-container max-container flex w-full flex-col gap-14">
         <div className="flex flex-col items-start justify-center gap-[10%] md:flex-row">
-          <Link href="/" className="mb-10">
+          {/* <Link href="/" className="mb-10">
             <Image src="/AutoLogo.png" alt="logo2" width={160} height={120}/>
-          </Link>
+          </Link> */}
 
-          <div className='flex flex-wrap gap-10 sm:justify-between md:flex-1'>
+          <div className='flex flex-wrap  sm:justify-between md:flex-1'>
             <FooterColumn title='Learn More'>
             <ul className="regular-14 flex flex-col gap-4 text-gray-30">
                 {FOOTER_LINKS1.map((link) => (
@@ -24,6 +24,7 @@ const End = () => {
             </FooterColumn>
             <FooterColumn title='Services'>
             <ul className="regular-14 flex flex-col gap-4 text-gray-30">
+              {/* List of taken from contants/index.ts*/}
                 {FOOTER_LINKS2.map((link) => (
                   <Link href={link.href} key={link.key} className="regular-16 text-ayellow flex cursor-pointer pb-1.5 transition-all hover:font-bold">
                   {link.label}
@@ -34,6 +35,8 @@ const End = () => {
 
             
             <div className="flex flex-col gap-5">
+            <br/>
+              {/* List of taken from contants/index.ts*/}
               <FooterColumn title={FOOTER_CONTACT_INFO.title}>
                 {FOOTER_CONTACT_INFO.links.map((link) => (
                   <Link
@@ -41,7 +44,9 @@ const End = () => {
                     key={link.label}
                     className="flex gap-4 md:flex-col lg:flex-row"
                   >
-                    <p className="whitespace-nowrap">
+                    <p //className="whitespace-nowrap"
+                    style={{ fontFamily: 'Arial', fontSize: '15px' }}
+                    >
                       {link.label}:
                     </p>
                     <p className="medium-14 whitespace-nowrap text-blue-70">
@@ -50,9 +55,11 @@ const End = () => {
                   </Link>
                 ))}
               </FooterColumn>
+              <br/>
             </div>
 
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 py-2">
+              <br/>
               <FooterColumn title={SOCIALS.title}>
                 <ul className="regular-14 flex gap-4 text-gray-30">
                   {SOCIALS.links.map((link) => (

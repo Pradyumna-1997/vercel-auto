@@ -1,10 +1,9 @@
 "use client";
 
-import { Button, Card, Col, Descriptions, Image, Row } from "antd";
+import { Button, Card, Image, Row } from "antd";
 import React, { useEffect, useState } from "react";
-import { CheckCircleFilled } from "@ant-design/icons";
 
-
+import ServiceList from "./ServiceList";
 
 interface ServicePriceProps {
   city: number | null;
@@ -38,7 +37,7 @@ const ServicePrice: React.FC<ServicePriceProps> = ({ city, model, fuel }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         // Update state with data
         setService1(data.Service1);
         setService1cost(data.Service1cost);
@@ -55,134 +54,298 @@ const ServicePrice: React.FC<ServicePriceProps> = ({ city, model, fuel }) => {
         setService7(data.Service7);
         setService7cost(data.Service7cost);
       });
-  }, [, fuel]);
+  }, [, city, fuel]);
 
   return (
     <div>
-      <Button
-        style={{
-          width: "33.33%",
-          height: "50px",
-          backgroundColor: selectedButton === 1 ? "darkgrey" : undefined,
-        }}
-        onClick={() => {
-          setServiceState(1);
-          setSelectedButton(1);
-        }}
-      >
-        General Service
-      </Button>
-      <Button
-        style={{
-          width: "33.33%",
-          height: "50px",
-          backgroundColor: selectedButton === 2 ? "darkgrey" : undefined,
-        }}
-        onClick={() => {
-          setServiceState(2);
-          setSelectedButton(2);
-        }}
-      >
-        Painting
-      </Button>
-      <Button
-        style={{
-          width: "33.33%",
-          height: "50px",
-          backgroundColor: selectedButton === 3 ? "darkgrey" : undefined,
-        }}
-        onClick={() => {
-          setServiceState(3);
-          setSelectedButton(3);
-        }}
-      >
-        Others
-      </Button>
+      {/* Row 1 of Buttons */}
+      <Row>
+        <Button
+          style={{
+            width: "33.33%",
+            height: "50px",
+            backgroundColor: selectedButton === 1 ? "darkgrey" : undefined,
+          }}
+          onClick={() => {
+            setServiceState(1);
+            setSelectedButton(1);
+          }}
+        >
+          General Service
+        </Button>
+        <Button
+          style={{
+            width: "33.33%",
+            height: "50px",
+            backgroundColor: selectedButton === 2 ? "darkgrey" : undefined,
+          }}
+          onClick={() => {
+            setServiceState(2);
+            setSelectedButton(2);
+          }}
+        >
+          Denting/Painting
+        </Button>
+        <Button
+          style={{
+            width: "33.33%",
+            height: "50px",
+            backgroundColor: selectedButton === 3 ? "darkgrey" : undefined,
+          }}
+          onClick={() => {
+            setServiceState(3);
+            setSelectedButton(3);
+          }}
+        >
+          AC Services
+        </Button>
+      </Row>
+
+      {/* Row 2 of Buttons */}
+      <Row align="middle" justify="center">
+        <Button
+          style={{
+            width: "33.33%",
+            height: "50px",
+            backgroundColor: selectedButton === 4 ? "darkgrey" : undefined,
+          }}
+          onClick={() => {
+            setServiceState(4);
+            setSelectedButton(4);
+          }}
+        >
+          Car Checkup
+        </Button>
+        <Button
+          style={{
+            width: "33.33%",
+            height: "50px",
+            backgroundColor: selectedButton === 5 ? "darkgrey" : undefined,
+          }}
+          onClick={() => {
+            setServiceState(5);
+            setSelectedButton(5);
+          }}
+        >
+          Battery/Tyre
+        </Button>
+      </Row>
       <br />
       <br />
-      {servicestate === 1 && fuel && (
-        <>
-          <Card
-            title={<span style={{ color: "ablue" }}>{service1}</span>}
-            extra={<p style={{ color: "green" }}>₹{service1cost}*</p>}
-            style={{ width: "90%" }}
-          >
-            <Row>
-              <Descriptions column={2} style={{ listStyleType: 'none' }} colon={false}>
-                <Descriptions.Item label={<CheckCircleFilled style={{ color: 'green' }} />}>
-                  <span style={{ fontSize: '10px', opacity: 0.5 }}>Engine Oil Replaced</span>
-                </Descriptions.Item>
-                <Descriptions.Item label={<CheckCircleFilled style={{ color: 'green'}} />}>
-                  <span style={{ fontSize: '10px', opacity: 0.5 }}>Oil Filter Replaced</span>
-                </Descriptions.Item>
-                <Descriptions.Item label={<CheckCircleFilled style={{ color: 'green' }} />}>
-                  <span style={{ fontSize: '10px', opacity: 0.5 }}>Air filter Cleaning</span>
-                </Descriptions.Item>
-                <Descriptions.Item label={<CheckCircleFilled style={{ color: 'green'}} />}>
-                  <span style={{ fontSize: '10px', opacity: 0.5 }}>Coolant - Top up</span>
-                </Descriptions.Item>
-              </Descriptions>
+      <Row justify="center">
+        {servicestate === 1 && fuel && (
+          <>
+            <Card
+              title={service1}
+              extra={<p style={{ color: "green" }}>₹{service1cost}*</p>}
+              style={{
+                width: "90%",
+                boxShadow: "1px 1px 5px rgba(0,0,0,0.1)",
+                borderRadius: "10px",
+              }}
+            >
+              <Row>
+                <ServiceList id={1} />
               </Row>
-            <Row>
+              <Row>
                 <Image
                   width="100%"
-                  src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/Standard_service.webp" // replace with your image URL
+                  src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/Standard_service.webp" 
                 />
+              </Row>
+              <Row justify="center" style={{ marginTop: "20px" }}>
+                <Button
+                  className="bg-ayellow"
+                  style={{
+                    //backgroundColor: "yellow",
+                    color: "white",
+                    height: "50px",
+                    width: "200px",
+                    fontSize: "20px",
+                  }}
+                >
+                  Book Now
+                </Button>
+              </Row>
+            </Card>
+            <div style={{ marginBottom: '20px' }} /> 
+            <Card
+              title={service2}
+              extra={<p style={{ color: "green" }}>₹{service2cost}*</p>}
+              style={{
+                width: "90%",
+                boxShadow: "1px 1px 5px rgba(0,0,0,0.1)",
+                borderRadius: "10px",
+              }}
+            >
+              <Row>
+                <ServiceList id={2} />
+              </Row>
+              <Row>
+                <Image
+                  width="100%"
+                  src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/Comprehensive_service.webp" 
+                />
+              </Row>
+              <Row justify="center" style={{ marginTop: "20px" }}>
+                <Button
+                  className="bg-ayellow"
+                  style={{
+                    //backgroundColor: "yellow",
+                    color: "white",
+                    height: "50px",
+                    width: "200px",
+                    fontSize: "20px",
+                  }}
+                >
+                  Book Now
+                </Button>
+              </Row>
+            </Card>
+          </>
+        )}
+        {servicestate === 2 && fuel && (
+         <>
+         <Card
+           title={service4}
+           extra={<p style={{ color: "green" }}>Starts @ ₹{service4cost}*</p>}
+           style={{
+             width: "90%",
+             boxShadow: "1px 1px 5px rgba(0,0,0,0.1)",
+             borderRadius: "10px",
+           }}
+         >
+           <Row>
+             <ServiceList id={4} />
+           </Row>
+           <Row>
+             <Image
+               width="100%"
+               src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/Alloy_painting.webp" 
+             />
+           </Row>
+           <Row justify="center" style={{ marginTop: "20px" }}>
+             <Button
+               className="bg-ayellow"
+               style={{
+                 //backgroundColor: "yellow",
+                 color: "white",
+                 height: "50px",
+                 width: "200px",
+                 fontSize: "20px",
+               }}
+             >
+               Book Now
+             </Button>
+           </Row>
+         </Card>
+         <div style={{ marginBottom: '20px' }} /> 
+         <Card
+           title={service7}
+           extra={<p style={{ color: "green" }}>Starts @ ₹{service7cost}*</p>}
+           style={{
+             width: "90%",
+             boxShadow: "1px 1px 5px rgba(0,0,0,0.1)",
+             borderRadius: "10px",
+           }}
+         >
+           <Row>
+             <ServiceList id={7} />
+           </Row>
+           <Row>
+             <Image
+               width="100%"
+               src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/Body-painting.webp" 
+             />
+           </Row>
+           <Row justify="center" style={{ marginTop: "20px" }}>
+             <Button
+               className="bg-ayellow"
+               style={{
+                 //backgroundColor: "yellow",
+                 color: "white",
+                 height: "50px",
+                 width: "200px",
+                 fontSize: "20px",
+               }}
+             >
+               Book Now
+             </Button>
+           </Row>
+         </Card>
+       </>
+     )}
+        {servicestate === 3 && fuel && (
+          <Card
+            title={service5}
+            extra={<p style={{ color: "green" }}> ₹{service5cost}*</p>}
+            style={{
+              width: "90%",
+              boxShadow: "1px 1px 5px rgba(0,0,0,0.1)",
+              borderRadius: "10px",
+            }}
+          >
+            <Row>
+              <ServiceList id={5} />
+            </Row>
+            <Row>
+              <Image
+                width="100%"
+                src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/ac-service.webp" 
+              />
+            </Row>
+            <Row justify="center" style={{ marginTop: "20px" }}>
+              <Button
+                className="bg-ayellow"
+                style={{
+                  //backgroundColor: "yellow",
+                  color: "white",
+                  height: "50px",
+                  width: "200px",
+                  fontSize: "20px",
+                }}
+              >
+                Book Now
+              </Button>
             </Row>
           </Card>
+          )}
+          {servicestate === 4 && fuel && (
           <Card
-            title={<span style={{ color: "ablue" }}>{service2}</span>}
-            extra={<p style={{ color: "green" }}>₹{service2cost}*</p>}
-            style={{ width: "90%" }}
-          />
-        </>
-      )}
-      {servicestate === 2 && fuel && (
-        <>
-          <Card
-            title={<span style={{ color: "ablue" }}>{service3}</span>}
-            extra={<p style={{ color: "green" }}>₹{service3cost}*</p>}
-            style={{ width: "90%" }}
-          />
-          <Card
-            title={<span style={{ color: "ablue" }}>{service4}</span>}
-            extra={<p style={{ color: "green" }}>₹{service4cost}*</p>}
-            style={{ width: "90%" }}
-          />
-        </>
-      )}
-      {servicestate === 3 && fuel && (
-        <>
-          <Card
-            title={<span style={{ color: "ablue" }}>{service5}</span>}
-            extra={<p style={{ color: "green" }}>₹{service5cost}*</p>}
-            style={{ width: "90%" }}
-          />
-          <Card
-            title={<span style={{ color: "ablue" }}>{service6}</span>}
-            extra={<p style={{ color: "green" }}>₹{service6cost}*</p>}
-            style={{ width: "90%" }}
-          />
-          <Card
-            title={<span style={{ color: "ablue" }}>{service7}</span>}
-            extra={<p style={{ color: "green" }}>₹{service7cost}*</p>}
-            style={{ width: "90%" }}
-          />
-        </>
-      )}
-
-      {/* {fuel && (
-      <>
-        <p> {service1} cost :</p><p> ₹{service1cost}</p><br/>
-        <p> {service2} cost :</p><p> ₹{service2cost}</p><br/>
-        <p> {service3} cost :</p><p> ₹{service3cost}</p><br/>
-        <p> {service4} cost :</p><p> ₹{service4cost}</p><br/>
-        <p> {service5} cost :</p><p> ₹{service5cost}</p><br/>
-        <p> {service6} cost :</p><p> ₹{service6cost}</p><br/>
-        <p> {service7} cost :</p><p> ₹{service7cost}</p><br/>
-      </>
-    )} */}
-      {/* Rest of your component JSX... */}
+            title={service6}
+            extra={<p style={{ color: "green" }}> ₹{service6cost}*</p>}
+            style={{
+              width: "90%",
+              boxShadow: "1px 1px 5px rgba(0,0,0,0.1)",
+              borderRadius: "10px",
+            }}
+          >
+            <Row>
+              <ServiceList id={6} />
+            </Row>
+            <Row>
+              <Image
+                width="100%"
+                src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/gen-health-checkup.webp" 
+              />
+            </Row>
+            <Row justify="center" style={{ marginTop: "20px" }}>
+              <Button
+                className="bg-ayellow"
+                style={{
+                  
+                  color: "white",
+                  height: "50px",
+                  width: "200px",
+                  fontSize: "20px",
+                }}
+              >
+                Book Now
+              </Button>
+            </Row>
+          </Card>
+          )}
+          </Row>
     </div>
   );
 };

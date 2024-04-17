@@ -6,11 +6,8 @@ import "./Navbar.css";
 import Link from "next/link";
 import Hamburger from "hamburger-react";
 
-
 import { Select } from "antd";
 const { Option } = Select;
-
-
 
 interface DataItem {
   id: number;

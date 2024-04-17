@@ -8,6 +8,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        amblue: '#203864',
+        amyellow: '#FFCE09',
         "ablue":"#203864",
         "ayellow": "#FFCE09",
         mcolor: {

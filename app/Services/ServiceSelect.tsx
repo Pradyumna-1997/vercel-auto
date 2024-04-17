@@ -17,10 +17,10 @@ const ServiceSelect: React.FC = () => {
   const [data, setData] = useState<GetItem[]>([]);
   const [models, setModels] = useState<GetItem[]>([]);
   
-  const [selectedCityId, setSelectedCityId] = useState<number | null>(null);
-  const [selectedMakeId, setSelectedMakeId] = useState<number | null>(null);
-  const [selectedModelId, setSelectedModelId] = useState<number | null>(null);
-  const [selectedFuelId, setSelectedFuelId] = useState<number | null>(null);
+  const [selectedCityId, setSelectedCityId] = useState<number | null>(1);
+  const [selectedMakeId, setSelectedMakeId] = useState<number | null>(1);
+  const [selectedModelId, setSelectedModelId] = useState<number | null>(226);
+  const [selectedFuelId, setSelectedFuelId] = useState<number | null>(1);
 
   useEffect(() => {
     const fetchMake = async () => {

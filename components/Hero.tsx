@@ -1,10 +1,36 @@
+"use client";
 
-import Button from './Button'
-import TopAd from './TopAd'
+import TopAd from "./TopAd";
+
+import { useState } from "react";
+import { Button, Input } from "antd";
 
 const Hero = () => {
+  // Setting Ustestates for Quick Assistance
+  const [quickName, setQuickName] = useState("");
+  const [quickPhoneNumber, setQuickPhoneNumber] = useState("");
+
+  // Function to handle the form submission
+  const handleSubmit = async () => {
+    // Make a POST request to the backend 
+    // Needs to be updated for actual site]
+    const response = await fetch('https://abc.com/backend', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: quickName,
+        phoneNumber: quickPhoneNumber,
+      }),
+    });
+  
+    if (!response.ok) {
+      // handle error
+    }
+  };
+
   return (
-    //<section className="max-container padding-container flex flex-col gap-20 py-10 md:gap-28 lg:py-20 xl:flex-row">
     <section className="max-container padding-container flex flex-col gap-20 py-10 ">
       <div className="hero-map" />
       <div className="relative z-20 flex flex-1 flex-col xl:w-1/2">
@@ -17,32 +43,32 @@ const Hero = () => {
 
       <div className=" flex flex-1">
         <div className="relative z-20 flex w-[500px] flex-col gap-8 rounded-3xl bg-ablue px-7 py-5">
-            <div className="flex flex-col">
-                <div className="flexBetween">
-                    <p className="bold-20 text-white">Name</p>
-                </div>
-            <p className="regular-16 text-gray-20">Type Name Here</p>
-            </div>
-            <div className="flex flex-col">
-                <div className="flexBetween">
-                    <p className="bold-20 text-white">Phone Number</p>
-                </div>
-            <p className="regular-16 text-gray-20">Type Phone Number Here</p>
-            </div>
-          <div className="flex flex-col w-full gap-3 sm:flex-row">
-          <Button 
-            type="button" 
-            title="Get Quick Assistance" 
-            variant="btn_ayellow" 
+          <Input
+            placeholder="Type Name Here"
+            onChange={(e) => setQuickName(e.target.value)}
           />
-          </div>
+          <Input
+            placeholder="Type Phone Number Here"
+            onChange={(e) => setQuickPhoneNumber(e.target.value)}
+          />
+          <Button
+                className="bg-ayellow "
+                style={{
+                  color: "white",
+                  height: "50px",
+                  width: "300px",
+                  fontSize: "20px",
+                }}
+                //#####Remove the comment below to enable the handleSubmit function####
+                //Update the backend URL to the actual backend URL
+                //onClick={handleSubmit}
+              >
+            Get Quick Assistance
+          </Button>
         </div>
-
-          
-        </div>
-      
+      </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
