@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Col, Row, notification } from 'antd';
 
 import ServicePrice from "./ServicePrice" ; 
+import AllBrands from "@/components/AllBrands";
 
 interface GetItem {
   id: number;
@@ -230,6 +231,21 @@ const ServiceSelect: React.FC = () => {
       Click here to Select Car to be Serviced
     </Button>
     <ServicePrice city={selectedCityId} model={selectedModelId} fuel={selectedFuelId} />
+    {(selectedFuelId === 0 || selectedFuelId === null) && 
+    <Button
+    onClick={handleShowIds}
+    style={{
+      width: '100%',
+      height: '650px',
+      display: 'flex',
+    }}
+  >
+      <div>
+      <AllBrands />
+      </div>
+    </Button>
+
+    }
   </div>
 
   );

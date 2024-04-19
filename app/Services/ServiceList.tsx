@@ -4,11 +4,11 @@ import { CheckCircleFilled } from '@ant-design/icons';
 import { Descriptions } from 'antd';
 
 interface ServiceListProps {
-    id: number; // or number, depending on what type your id is
+    id: number; 
   }
 interface ServiceDetails {
     id: number;
-    details: string; // replace with the actual type of your details
+    details: string; 
   }
   
   const ServiceList: React.FC<ServiceListProps> = ({ id }) => {

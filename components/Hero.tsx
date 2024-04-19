@@ -4,6 +4,7 @@ import TopAd from "./TopAd";
 
 import { useState } from "react";
 import { Button, Input } from "antd";
+import { Row, Col, Image } from "antd";
 
 const Hero = () => {
   // Setting Ustestates for Quick Assistance
@@ -12,19 +13,19 @@ const Hero = () => {
 
   // Function to handle the form submission
   const handleSubmit = async () => {
-    // Make a POST request to the backend 
+    // Make a POST request to the backend
     // Needs to be updated for actual site]
-    const response = await fetch('https://abc.com/backend', {
-      method: 'POST',
+    const response = await fetch("https://abc.com/backend", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name: quickName,
         phoneNumber: quickPhoneNumber,
       }),
     });
-  
+
     if (!response.ok) {
       // handle error
     }
@@ -42,7 +43,32 @@ const Hero = () => {
       <TopAd />
 
       <div className=" flex flex-1">
-        <div className="relative z-20 flex w-[500px] flex-col gap-8 rounded-3xl bg-ablue px-7 py-5">
+        <div
+          className="relative z-20 flex w-[500px] flex-col gap-8 rounded-3xl bg-white px-7 py-5 items-center justify-center"
+          style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
+        >
+          {/* Below are the images above the input fields */}
+          <Row gutter={16} justify="center">
+            <Col span={8}>
+              <Image
+                width={100}
+                src="https://www.automovill.com/assets/images/icons/car.svg"
+              />
+            </Col>
+            <Col span={8}>
+              <Image
+                width={100}
+                src="https://www.automovill.com/assets/images/icons/customer.svg"
+              />
+            </Col>
+            <Col span={8}>
+              <Image
+                width={100}
+                src="https://www.automovill.com/assets/images/icons/rating.svg"
+              />
+            </Col>
+          </Row>
+
           <Input
             placeholder="Type Name Here"
             onChange={(e) => setQuickName(e.target.value)}
@@ -52,17 +78,17 @@ const Hero = () => {
             onChange={(e) => setQuickPhoneNumber(e.target.value)}
           />
           <Button
-                className="bg-ayellow "
-                style={{
-                  color: "white",
-                  height: "50px",
-                  width: "300px",
-                  fontSize: "20px",
-                }}
-                //#####Remove the comment below to enable the handleSubmit function####
-                //Update the backend URL to the actual backend URL
-                //onClick={handleSubmit}
-              >
+            className="bg-ayellow "
+            style={{
+              color: "white",
+              height: "50px",
+              width: "300px",
+              fontSize: "20px",
+            }}
+            //#####Remove the comment below to enable the handleSubmit function####
+            //Update the backend URL to the actual backend URL
+            //onClick={handleSubmit}
+          >
             Get Quick Assistance
           </Button>
         </div>

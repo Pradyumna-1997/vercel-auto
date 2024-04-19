@@ -7,19 +7,19 @@ import { RxDotFilled } from 'react-icons/rx';
 function TopAd2() {
   const slides = [
     {
-      src: '/TopAd1.png',alt: 'TopAd1',href: '/Services'
+      src: 'https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/banner/web1.webp',alt: 'TopAd1',href: '/Services'
     },
     {
-      src: '/TopAd2.png',alt: 'TopAd2',href: '/Services'
+      src: 'https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/banner/web2.webp',alt: 'TopAd2',href: '/Services'
     },
     {
-      src: '/TopAd3.png',alt: 'TopAd3',href: '/Services'
+      src: 'https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/banner/web3.webp',alt: 'TopAd3',href: '/Services'
     },
     {
-      src: '/TopAd4.png',alt: 'TopAd4',href: '/Services'
+      src: 'https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/banner/web4.webp',alt: 'TopAd4',href: '/Services'
     },
     {
-      src: '/TopAd5.png',alt: 'TopAd5',href: '/Services'
+      src: 'https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/banner/web5.webp',alt: 'TopAd5',href: '/Services'
     },
   ];
 

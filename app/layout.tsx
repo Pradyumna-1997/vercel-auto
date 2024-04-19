@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 
 
 
-
+// Metadata for the page that sets the Navbar and Footer of all pages
 export const metadata: Metadata = {
   title: "Automoville- One stop Solution for Car services",
   description: "One stop Solution for Car services",
