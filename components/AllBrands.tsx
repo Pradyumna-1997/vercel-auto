@@ -32,19 +32,11 @@ const AllBrands: React.FC = () => {
   }, []);
 
   return (
+    //This is the component that displays all the car brands that we serve and is displayed on the home page and services page.
     <div>
       <div>
         <br />
-        <span
-            style={{
-                textAlign: "center",
-                color: "ablue",
-                fontSize: "2rem",
-                fontWeight: "bold",
-            }}
-        >
-          We serve these car brands
-          </span>
+        <h1 style={{ textAlign: "center" }}>We Serve these Car Brands</h1>
         <Row gutter={[16, 16]} justify="start">
           {data.map((item, index) => (
             <div key={index} style={{ width: "20%", height: "20%" }}>

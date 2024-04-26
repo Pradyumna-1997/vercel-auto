@@ -34,6 +34,7 @@ function TopAd2() {
   setTimeout(nextSlide,5000)
 
   return (
+    //This component is responsible for rendering the top advertisement on the page. It could contains links to images and the ads are put in a carosel that changes after time
     <div className='max-w-[1400px] h-[200px] flex-column w-full m-auto relative group'>
       <Link href={slides[currentIndex].href} key={slides[currentIndex].alt}>
         <div
@@ -41,6 +42,7 @@ function TopAd2() {
           className='w-full h-full rounded-2xl bg-center bg-[length:100%_100%] duration-500'
         ></div>
       </Link>
+      {/* #######Uncomment the below code to add arrows to the top ad */}
       {/* Left Arrow */}
       {/* <div className='hidden group-hover:block absolute top-[40%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
         <BsChevronCompactLeft onClick={prevSlide} size={30} />

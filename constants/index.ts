@@ -1,3 +1,4 @@
+/////##########This is the main file where all the lists and constants are defined#########/////
 // NAVIGATION
 export const NAV_LINKS = [
     { href: '/', key: 'Home', label: 'Home' },

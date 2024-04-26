@@ -31,6 +31,7 @@ const ServicePrice: React.FC<ServicePriceProps> = ({ city, model, fuel }) => {
   const [selectedButton, setSelectedButton] = useState<number | null>(null);
 
   useEffect(() => {
+    // This Useeffect si triggered when the city or fuel changes and at the start of the page
     // Fetch data from API
     fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}customer/servicelist/getnewestimate?city=${city}&model=${model}&fuel=${fuel}`
@@ -38,7 +39,7 @@ const ServicePrice: React.FC<ServicePriceProps> = ({ city, model, fuel }) => {
       .then((response) => response.json())
       .then((data) => {
         // console.log(data);
-        // Update state with data
+        //The usesates are used to store the data fetched from the backend and the ids of the data
         setService1(data.Service1);
         setService1cost(data.Service1cost);
         setService2(data.Service2);
@@ -57,6 +58,8 @@ const ServicePrice: React.FC<ServicePriceProps> = ({ city, model, fuel }) => {
   }, [, city, fuel]);
 
   return (
+    //This component is responsible for rendering the service price page. It contains buttons to select the type of service and the price of the service
+    // Each button changes the state of the service from 1 to 5 to show the different services
     <div>
       {/* Row 1 of Buttons */}
       <Row>
@@ -132,7 +135,9 @@ const ServicePrice: React.FC<ServicePriceProps> = ({ city, model, fuel }) => {
       </Row>
       <br />
       <br />
+      {/* The below code is used to display the services and their prices according to the usestate that was changed */}
       <Row justify="center">
+        {/* Displays only if first button is pressed */}
         {servicestate === 1 && fuel && (
           <>
             <Card
@@ -150,7 +155,7 @@ const ServicePrice: React.FC<ServicePriceProps> = ({ city, model, fuel }) => {
               <Row>
                 <Image
                   width="100%"
-                  src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/Standard_service.webp" 
+                  src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/Standard_service.webp"
                 />
               </Row>
               <Row justify="center" style={{ marginTop: "20px" }}>
@@ -168,7 +173,7 @@ const ServicePrice: React.FC<ServicePriceProps> = ({ city, model, fuel }) => {
                 </Button>
               </Row>
             </Card>
-            <div style={{ marginBottom: '20px' }} /> 
+            <div style={{ marginBottom: "20px" }} />
             <Card
               title={service2}
               extra={<p style={{ color: "green" }}>₹{service2cost}*</p>}
@@ -184,7 +189,7 @@ const ServicePrice: React.FC<ServicePriceProps> = ({ city, model, fuel }) => {
               <Row>
                 <Image
                   width="100%"
-                  src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/Comprehensive_service.webp" 
+                  src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/Comprehensive_service.webp"
                 />
               </Row>
               <Row justify="center" style={{ marginTop: "20px" }}>
@@ -204,77 +209,83 @@ const ServicePrice: React.FC<ServicePriceProps> = ({ city, model, fuel }) => {
             </Card>
           </>
         )}
+        {/* Displays only if second button is pressed */}
         {servicestate === 2 && fuel && (
-         <>
-         <Card
-           title={service4}
-           extra={<p style={{ color: "green" }}>Starts @ ₹{service4cost}*</p>}
-           style={{
-             width: "90%",
-             boxShadow: "1px 1px 5px rgba(0,0,0,0.1)",
-             borderRadius: "10px",
-           }}
-         >
-           <Row>
-             <ServiceList id={4} />
-           </Row>
-           <Row>
-             <Image
-               width="100%"
-               src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/Alloy_painting.webp" 
-             />
-           </Row>
-           <Row justify="center" style={{ marginTop: "20px" }}>
-             <Button
-               className="bg-ayellow"
-               style={{
-                 //backgroundColor: "yellow",
-                 color: "white",
-                 height: "50px",
-                 width: "200px",
-                 fontSize: "20px",
-               }}
-             >
-               Book Now
-             </Button>
-           </Row>
-         </Card>
-         <div style={{ marginBottom: '20px' }} /> 
-         <Card
-           title={service7}
-           extra={<p style={{ color: "green" }}>Starts @ ₹{service7cost}*</p>}
-           style={{
-             width: "90%",
-             boxShadow: "1px 1px 5px rgba(0,0,0,0.1)",
-             borderRadius: "10px",
-           }}
-         >
-           <Row>
-             <ServiceList id={7} />
-           </Row>
-           <Row>
-             <Image
-               width="100%"
-               src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/Body-painting.webp" 
-             />
-           </Row>
-           <Row justify="center" style={{ marginTop: "20px" }}>
-             <Button
-               className="bg-ayellow"
-               style={{
-                 //backgroundColor: "yellow",
-                 color: "white",
-                 height: "50px",
-                 width: "200px",
-                 fontSize: "20px",
-               }}
-             >
-               Book Now
-             </Button>
-           </Row>
-         </Card>
-       </>
-     )}
+          <>
+            <Card
+              title={service4}
+              extra={
+                <p style={{ color: "green" }}>Starts @ ₹{service4cost}*</p>
+              }
+              style={{
+                width: "90%",
+                boxShadow: "1px 1px 5px rgba(0,0,0,0.1)",
+                borderRadius: "10px",
+              }}
+            >
+              <Row>
+                <ServiceList id={4} />
+              </Row>
+              <Row>
+                <Image
+                  width="100%"
+                  src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/Alloy_painting.webp"
+                />
+              </Row>
+              <Row justify="center" style={{ marginTop: "20px" }}>
+                <Button
+                  className="bg-ayellow"
+                  style={{
+                    //backgroundColor: "yellow",
+                    color: "white",
+                    height: "50px",
+                    width: "200px",
+                    fontSize: "20px",
+                  }}
+                >
+                  Book Now
+                </Button>
+              </Row>
+            </Card>
+            <div style={{ marginBottom: "20px" }} />
+            <Card
+              title={service7}
+              extra={
+                <p style={{ color: "green" }}>Starts @ ₹{service7cost}*</p>
+              }
+              style={{
+                width: "90%",
+                boxShadow: "1px 1px 5px rgba(0,0,0,0.1)",
+                borderRadius: "10px",
+              }}
+            >
+              <Row>
+                <ServiceList id={7} />
+              </Row>
+              <Row>
+                <Image
+                  width="100%"
+                  src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/Body-painting.webp"
+                />
+              </Row>
+              <Row justify="center" style={{ marginTop: "20px" }}>
+                <Button
+                  className="bg-ayellow"
+                  style={{
+                    //backgroundColor: "yellow",
+                    color: "white",
+                    height: "50px",
+                    width: "200px",
+                    fontSize: "20px",
+                  }}
+                >
+                  Book Now
+                </Button>
+              </Row>
+            </Card>
+          </>
+        )}
+        {/* Displays only if third button is pressed */}
         {servicestate === 3 && fuel && (
           <Card
             title={service5}
@@ -291,7 +302,7 @@ const ServicePrice: React.FC<ServicePriceProps> = ({ city, model, fuel }) => {
             <Row>
               <Image
                 width="100%"
-                src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/ac-service.webp" 
+                src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/ac-service.webp"
               />
             </Row>
             <Row justify="center" style={{ marginTop: "20px" }}>
@@ -309,8 +320,9 @@ const ServicePrice: React.FC<ServicePriceProps> = ({ city, model, fuel }) => {
               </Button>
             </Row>
           </Card>
-          )}
-          {servicestate === 4 && fuel && (
+        )}
+        {/* Displays only if fourth button is pressed */}
+        {servicestate === 4 && fuel && (
           <Card
             title={service6}
             extra={<p style={{ color: "green" }}> ₹{service6cost}*</p>}
@@ -326,14 +338,13 @@ const ServicePrice: React.FC<ServicePriceProps> = ({ city, model, fuel }) => {
             <Row>
               <Image
                 width="100%"
-                src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/gen-health-checkup.webp" 
+                src="https://s3.ap-south-1.amazonaws.com/prodimages.automovill.com/services/gen-health-checkup.webp"
               />
             </Row>
             <Row justify="center" style={{ marginTop: "20px" }}>
               <Button
                 className="bg-ayellow"
                 style={{
-                  
                   color: "white",
                   height: "50px",
                   width: "200px",
@@ -344,8 +355,9 @@ const ServicePrice: React.FC<ServicePriceProps> = ({ city, model, fuel }) => {
               </Button>
             </Row>
           </Card>
-          )}
-          </Row>
+        )}
+      </Row>
+      {/* ###### More Services need to be harcoded here and before for services not included in the backend */}
     </div>
   );
 };

@@ -14,6 +14,7 @@ interface GetItem {
 
 
 const ServiceSelect: React.FC = () => {
+  //The usesates are used to store the data fetched from the backend and the ids of the data
   const [ids, setIds] = useState<number[]>([]);
   const [data, setData] = useState<GetItem[]>([]);
   const [models, setModels] = useState<GetItem[]>([]);
@@ -23,7 +24,10 @@ const ServiceSelect: React.FC = () => {
   const [selectedModelId, setSelectedModelId] = useState<number | null>(226);
   const [selectedFuelId, setSelectedFuelId] = useState<number | null>(1);
 
+  //The biggest and most complicated code for the service selection page. Multiple comments have been added to explain the code.  
+
   useEffect(() => {
+    // This Useeffect is responsible for fetching the data from the backend and setting the data and ids state at the start of the page
     const fetchMake = async () => {
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}core/getAllMake`);
@@ -38,6 +42,7 @@ const ServiceSelect: React.FC = () => {
         console.error('Error fetching data:', error);
       }
 
+      // The code below is responsible for setting the selected ids from the URL query parameters
       const urlParams = new URLSearchParams(window.location.search);
       const city = urlParams.get('city');
       const model = urlParams.get('model');
@@ -61,16 +66,15 @@ const ServiceSelect: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // If the selectedMakeId is null, do nothing
+    // This Useeffect is called when the selectedMakeId is changed. It is responsible for calling the function to fetch the models
     if (selectedMakeId === null || 0) {
       return;
     }
-    // Calling the function to fetch the models
     handleMakeClick(selectedMakeId);
   }, [selectedMakeId]);
 
   useEffect(() => {
-    // If the selectedMakeId is null, do nothing
+    // This Useeffect is called when the selectedModelId is changed. It is responsible for calling the function to fetch the fuel
     if (selectedModelId === null || 0) {
       return;
     }
@@ -85,6 +89,7 @@ const ServiceSelect: React.FC = () => {
   }, [selectedModelId]);
 
   useEffect(() => {
+    // This Useeffect is called when the selectedFuelId is changed. It is responsible for adding the selectedFuelId into the URL as a query parameter
     notification.destroy();
     // If the selectedFuelId is null, do nothing
     if (selectedFuelId === null || 0) {
@@ -92,7 +97,7 @@ const ServiceSelect: React.FC = () => {
     }
     console.log('Selected Fuel ID',selectedFuelId)
 
-    // Add selectedModelId into the URL as a query parameter
+    // Add selectedFuelId into the URL as a query parameter
     const url = new URL(window.location.href);
     url.searchParams.set('fuel', selectedFuelId.toString());
     window.history.pushState({}, '', url.toString());
@@ -106,6 +111,7 @@ const ServiceSelect: React.FC = () => {
   }, [selectedFuelId]);
 
   const Makeclick = async (id:number)=>{
+    // This function is called when the user clicks on the make. It is responsible for fetching the models of the selected make
     setSelectedFuelId(null);
     notification.open({
       message: `Please Select Your Model to Proceed`,
@@ -129,6 +135,7 @@ const ServiceSelect: React.FC = () => {
   };
 
   const Modelclick = async ()=>{
+    // This function is called when the user clicks on the model. It is responsible for fetching the fuel of the selected model
     notification.open({
       message: `Please Select Your Fuel to Proceed`,
       description: (
@@ -154,6 +161,7 @@ const ServiceSelect: React.FC = () => {
   
   
   const handleMakeClick = async (id: number) => {
+    // This function is called when the user clicks on the make. It is responsible for fetching the models of the selected make
     notification.destroy();
     try {
       const response2 = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}core/getModel?makeId=${id}`);
@@ -172,6 +180,7 @@ const ServiceSelect: React.FC = () => {
   };
 
   const handleFuelClick = async (id: number) => {
+    // This function is called when the user clicks on the fuel. It is responsible for setting the selectedFuelId
     notification.destroy();
     setSelectedFuelId(id); 
   };
@@ -179,7 +188,7 @@ const ServiceSelect: React.FC = () => {
   
 
   const handleShowIds = () => {
-        
+    // This function excecutes when user clicks select car to be serviced and We Serve the Brands.
     if (selectedCityId === null) {
       alert('Select your Location Please');
     }
@@ -212,6 +221,7 @@ const ServiceSelect: React.FC = () => {
 
   return (
     <div 
+    //The comment below could be added to the div to make it sticky
     //className="sticky top-10"
     >
     <Button
@@ -230,6 +240,7 @@ const ServiceSelect: React.FC = () => {
     >
       Click here to Select Car to be Serviced
     </Button>
+    {/* This is a very important code that calls all the ServicePrice from the backend and displays the prices of the selected car to be serviced */}
     <ServicePrice city={selectedCityId} model={selectedModelId} fuel={selectedFuelId} />
     {(selectedFuelId === 0 || selectedFuelId === null) && 
     <Button
@@ -241,6 +252,7 @@ const ServiceSelect: React.FC = () => {
     }}
   >
       <div>
+      {/* This imports the All Brand Component only if nothing is already selected */}
       <AllBrands />
       </div>
     </Button>

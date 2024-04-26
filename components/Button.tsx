@@ -10,6 +10,7 @@ type ButtonProps = {
 
 const Button = ({ type, title, icon, variant, full }: ButtonProps) => {
   return (
+    //This is the button component used for multiple buttons in the project
     <button
     className={`flexCenter gap-3 rounded-full border ${variant} ${full && 'w-full'}`}
       type={type}

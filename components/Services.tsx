@@ -4,6 +4,8 @@ import React from 'react'
 
 const Services = () => {
   return (
+    // This is the section of the home page that displays the services offered by the company
+    // This is a placeholder data and needs to be updated with actual data
     <section className="flex-col flexCenter overflow-hidden bg-feature-bg bg-center bg-no-repeat py-24">
       <div className="max-container padding-container relative w-full flex justify-end">
 

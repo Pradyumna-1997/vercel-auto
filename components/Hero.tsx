@@ -32,6 +32,8 @@ const Hero = () => {
   };
 
   return (
+    // This is the first section of the home page
+    // It contains a map image, a heading and a form to get quick assistance
     <section className="max-container padding-container flex flex-col gap-20 py-10 ">
       <div className="hero-map" />
       <div className="relative z-20 flex flex-1 flex-col xl:w-1/2">

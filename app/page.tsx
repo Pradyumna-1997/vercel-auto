@@ -3,7 +3,7 @@ import AllBrands from "@/components/AllBrands";
 import End from "@/components/End";
 import GetApp from "@/components/GetApp";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
+import Faq from "@/components/Faq";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       <Hero />
       <GetApp />
       <AllBrands />
-      <Services/>
+      <Faq />
       <End />
     </h1>
   );

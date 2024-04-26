@@ -4,6 +4,7 @@ import { Image } from "antd";
 
 const GetApp = () => {
   return (
+    // This is the component that displays the download app section on the home page.
     <section className="flexCenter w-full flex-col ">
       <div className="get-app">
         <div className=" flex w-full flex-1 flex-col items-start justify-center ">

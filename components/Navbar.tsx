@@ -83,6 +83,7 @@ interface DataItem {
 }
 
   return (
+    // Navbar component contains the navigation links and the city selection dropdown
     <nav className="flex max-container padding-container sticky top-0 z-30 py-4 bg-ablue px-2">
         <div className="right-0 lg:hidden">
          

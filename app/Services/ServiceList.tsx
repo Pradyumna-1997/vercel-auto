@@ -13,6 +13,8 @@ interface ServiceDetails {
   
   const ServiceList: React.FC<ServiceListProps> = ({ id }) => {
 
+    // This Function makes list of items in backend and displays them in two columns and tick mark in front of them
+
     const [itemList, setItemList] = useState<string[]>([]);
 
     useEffect(() => {
@@ -32,6 +34,7 @@ interface ServiceDetails {
     }, []);
 
     return(   
+      // This component is responsible for rendering the list of services provided by the company. It fetches the data from the backend and displays it in a two column format with a tick mark in front of each item
         <div>
           <Descriptions column={2} colon={false}>
       {itemList.map((item, index) => (

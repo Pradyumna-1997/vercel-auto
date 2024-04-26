@@ -1,3 +1,4 @@
+// This is the main place for storing custom colors ablue and ayellow which are usedrepeatedly in the project
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -8,6 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // These are the above mentioned important colors
         amblue: '#203864',
         amyellow: '#FFCE09',
         "ablue":"#203864",

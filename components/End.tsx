@@ -5,6 +5,8 @@ import React from 'react'
 
 const End = () => {
   return (
+    // This is the footer component that will be displayed at the bottom of the page of every page of the website.
+    // The footer contains the company logo, links to other pages, contact information and social media links.
     <footer className="flexCenter mb-24 mt-10 fixed-bottom">
       <div className="padding-container max-container flex w-full flex-col gap-14">
         <div className="flex flex-col items-start justify-center gap-[10%] md:flex-row">
